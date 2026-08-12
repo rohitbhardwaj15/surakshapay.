@@ -1,0 +1,23 @@
+:root {
+  --bg:#0D0F1A;--bg2:#13162A;--bg3:#1A1E35;--bg4:#20253D;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --violet:#6B5CE7;--violet2:#7B6CF7;--violet-bg:rgba(107,92,231,0.12);--violet-border:rgba(107,92,231,0.3);
+  --teal:#00C896;--teal-bg:rgba(0,200,150,0.1);--teal-border:rgba(0,200,150,0.25);
+  --gold:#F5A623;--gold-bg:rgba(245,166,35,0.1);--gold-border:rgba(245,166,35,0.25);
+  --rose:#E05B6B;--rose-bg:rgba(224,91,107,0.1);--rose-border:rgba(224,91,107,0.25);
+  --blue:#4A9EFF;--blue-bg:rgba(74,158,255,0.1);--blue-border:rgba(74,158,255,0.25);
+  --text:#F0F2FF;--text2:rgba(240,242,255,0.55);--text3:rgba(240,242,255,0.3);
+  --radius:12px;--radius-sm:8px;
+  --sidebar-width:232px;--topbar-height:52px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+a{text-decoration:none;color:inherit}
+button,input,select{font-family:inherit}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.page-enter{animation:pageIn 0.22s ease both}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{animation:spin 0.8s linear infinite}
+@keyframes pipeLive{0%,100%{box-shadow:0 0 0 0 rgba(107,92,231,0.4)}50%{box-shadow:0 0 0 7px rgba(107,92,231,0)}}
