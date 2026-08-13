@@ -92,7 +92,8 @@ async function start() {
   app.listen(PORT, () => {
     console.log(`\n🛡️  SurakshaPay API running on http://localhost:${PORT}`);
     console.log(`   Environment : ${process.env.NODE_ENV}`);
-    console.log(`   MongoDB URI : ${process.env.MONGODB_URI}`);
+    // Never log the full connection string — it contains the DB password.
+    console.log(`   MongoDB host: ${(process.env.MONGODB_URI || '').replace(/\/\/.*@/, '//<redacted>@')}`);
     console.log(`   Claims email: ${process.env.CLAIMS_EMAIL}`);
     console.log(`   Health check: http://localhost:${PORT}/api/health\n`);
   });
