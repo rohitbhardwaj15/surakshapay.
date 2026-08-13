@@ -22,9 +22,25 @@ const PORT = process.env.PORT || 3001;
 // ── Security middleware ─────────────────────────────────────────
 app.use(helmet());
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production'
-    ? ['https://surakshapay.vercel.app']
-    : ['http://localhost:5173', 'http://localhost:3000'],
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+
+    const allowedInDev = ['http://localhost:5173', 'http://localhost:3000'];
+    if (process.env.NODE_ENV !== 'production' && allowedInDev.includes(origin)) {
+      return callback(null, true);
+    }
+
+    const allowedProdOrigins = [
+      'https://surakshapay.vercel.app',
+    ];
+    const isSurakshapayVercelPreview = /^https:\/\/surakshapay-frontend(-[a-z0-9-]+)?\.vercel\.app$/.test(origin);
+
+    if (allowedProdOrigins.includes(origin) || isSurakshapayVercelPreview) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true,
 }));
 
